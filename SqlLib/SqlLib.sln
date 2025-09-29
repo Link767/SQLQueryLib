@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlLib", "SqlLib\SqlLib.csproj", "{59EB6CCB-E4CA-4EBC-B33E-605F81BBCAC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlLibTest", "SqlLibTest\SqlLibTest.csproj", "{17D4062A-FD79-4A76-A388-C746B06B59A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59EB6CCB-E4CA-4EBC-B33E-605F81BBCAC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EB6CCB-E4CA-4EBC-B33E-605F81BBCAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59EB6CCB-E4CA-4EBC-B33E-605F81BBCAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59EB6CCB-E4CA-4EBC-B33E-605F81BBCAC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D4062A-FD79-4A76-A388-C746B06B59A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D4062A-FD79-4A76-A388-C746B06B59A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D4062A-FD79-4A76-A388-C746B06B59A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D4062A-FD79-4A76-A388-C746B06B59A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5065B522-D8EE-4D6B-AAF2-7593FFA20958}
+	EndGlobalSection
+EndGlobal
