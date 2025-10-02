@@ -4,57 +4,38 @@ namespace SqlLib
 {
     public class Query : SqlManager
     {
-        private string ConnectionString { get; set; }
-        public Query(string ConnectionString) 
+        public Query(string ConnectionString) : base(ConnectionString) { }
+        
+        public string Insert(string tableName, string columns, string data)
         {
-            this.ConnectionString = ConnectionString;   
-        }  
-        public ResultQueryStatus Insert(string table, string columns, string data)
-        {
-            //string query = "INSERT INTO [User] (Login, Pass) VALUES ('Tom', 36)";
-            string query = $"INSERT INTO {table} ({columns}) VALUES ({data})";
-            ResultQueryStatus status;
-            return status = SQLQueryPerform(query);
+            string query = $"INSERT INTO {tableName} ({columns}) VALUES ({data})";
+            return SQLQueryPerform(query);
         }
-        public ResultQueryStatus Update(string table, string columns, string values)
+        public string Update(string tableName, string columns, string values)
         {
-            string query = $"UPDATE {table} SET {columns} = {values}";
-            ResultQueryStatus status = SQLQueryPerform(query);
-            return status = SQLQueryPerform(query);
+            string query = $"UPDATE {tableName} SET {columns} = {values}";
+            return SQLQueryPerform(query);
         }
-        public ResultQueryStatus Delete(string table, string where)
+        public string Delete(string tableName, string where)
         {
-            string query = $"DELETE {table} WHERE {where}";
-            ResultQueryStatus status = SQLQueryPerform(query);
-            return status = SQLQueryPerform(query);
+            string query = $"DELETE {tableName} WHERE {where}";
+            return SQLQueryPerform(query);
         }
-        private ResultQueryStatus SQLQueryPerform(string query)
+        //New 02.10.25
+        public string Select(string columns, string tableName)
         {
-            ResultQueryStatus status;
-            using (SqlConnection conn = new SqlConnection(ConnectionString))
-            {
-                conn.Open();
-                SqlCommand command = conn.CreateCommand();
-                SqlTransaction transaction = conn.BeginTransaction();
-
-                command.Connection = conn;
-                command.Transaction = transaction;
-                try
-                {
-                    command.CommandText = query;
-                    command.ExecuteNonQuery();
-
-                    transaction.Commit();
-                    status = 0;
-                }
-                catch(Exception ex)
-                {
-                    transaction.Rollback(); //Откат
-                    Console.WriteLine(ex.ToString());   
-                    status = (ResultQueryStatus)1;
-                }
-            }
-            return status;
+            string query = $"SELECT {columns} FROM {tableName}";
+            return SQLQueryPerform(query);
+        }
+        public string SelectFullTable(string tableName)
+        {
+            string query = $"SELECT * FROM {tableName}";
+            return SQLQueryPerform(query);
+        }
+        // You can write big requests here.
+        public string MyQuery(string query)
+        {
+            return SQLQueryPerform(query);
         }
     }
 }
