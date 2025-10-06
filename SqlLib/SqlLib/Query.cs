@@ -21,21 +21,29 @@ namespace SqlLib
             string query = $"DELETE {tableName} WHERE {where}";
             return SQLQueryPerform(query);
         }
-        //New 02.10.25
-        public string Select(string columns, string tableName)
+        public List<string> Select(string columns, string tableName)
         {
             string query = $"SELECT {columns} FROM {tableName}";
-            return SQLQueryPerform(query);
+            return SQLQueryPerformList(query); ;
         }
-        public string SelectFullTable(string tableName)
+        public List<string> SwlectWhere(string columns, string tableName, string where)
+        {
+            string query = $"SELECT {columns} FROM {tableName} WHERE {where}";
+            return SQLQueryPerformList(query);
+        }
+        public List<string> SelectFullTable(string tableName)
         {
             string query = $"SELECT * FROM {tableName}";
-            return SQLQueryPerform(query);
+            return SQLQueryPerformList(query);
         }
         // You can write big requests here.
         public string MyQuery(string query)
         {
             return SQLQueryPerform(query);
+        }
+        public List<string> MyQueryList(string query)
+        {
+            return SQLQueryPerformList(query);
         }
     }
 }

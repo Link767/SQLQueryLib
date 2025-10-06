@@ -94,5 +94,26 @@ namespace SqlLib
             }
             return report;
         }
+
+        protected List<string> SQLQueryPerformList(string query)
+        {
+            var list = new List<string>();
+
+            using (var conn = new SqlConnection(_ConnectionString))
+            using (var command = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var values = new object[reader.FieldCount]; //Creating an array of objects
+                        reader.GetValues(values); //Fills the values array with all the data of the current row.
+                        list.Add(string.Join(", ", values.Select(v => v.ToString())));//add an entry to the list and form a string
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
